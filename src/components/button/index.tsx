@@ -18,15 +18,17 @@ export type ButtonProps = {
 const Button: FC<ButtonProps> = (props) => {
   const { style, className, children, type = "default", size = "medium", round, icon, loading, disabled, onClick } = props
 
-  const btnClass = classNames({
-    mzl_btn: true,
-    [`mzl_btn_${type}`]: true,
-    [`mzl_btn_${size}`]: true,
-    mzl_btn_round: round,
-    mzl_btn_loading: loading,
-    [`mzl_btn_disabled mzl_btn_disabled_${type}`]: disabled,
-    [className || ""]: !!className,
-  })
+  const btnClass = classNames(
+    "mzl_btn",
+    {
+      [`mzl_btn_${type}`]: type,
+      [`mzl_btn_${size}`]: size,
+      mzl_btn_round: round,
+      mzl_btn_loading: loading,
+      mzl_btn_disabled: disabled,
+    },
+    className
+  )
 
   const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
     if (onClick && !loading) {

@@ -6,7 +6,7 @@ interface IProps {}
 
 const App: FC<IProps> = (props) => {
   return (
-    <div className="main" style={{ display: "flex", gap: 10, flexWrap: "wrap", width: "35%" }}>
+    <div className="main" style={{ display: "flex", gap: 10, flexWrap: "wrap", width: "35%", alignItems: "center" }}>
       <Button>默认按钮</Button>
       <Button type="primary">主要按钮</Button>
       <Button type="success">成功按钮</Button>
