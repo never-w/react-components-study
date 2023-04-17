@@ -30,6 +30,40 @@ const App: FC<IProps> = (props) => {
       </Button>
 
       <Button disabled>默认按钮</Button>
+
+      <Button icon="m-icon-edit">编辑</Button>
+      <Button type="primary" icon="m-icon-copy">
+        复制
+      </Button>
+      <Button icon="m-icon-search" round>
+        搜索
+      </Button>
+      <Button type="primary" icon="m-icon-scanning" round>
+        扫描
+      </Button>
+      <Button>
+        设置
+        <i className="m-icon-setting" />
+      </Button>
+      <Button type="primary">
+        添加
+        <span className="m-icon-add" />
+      </Button>
+      <Button icon="m-icon-edit" />
+      <Button type="primary" icon="m-icon-copy" />
+      <Button icon="m-icon-search" round />
+      <Button type="primary" icon="m-icon-scanning" round />
+
+      <Button loading>加载中</Button>
+      <Button type="primary" loading>
+        加载中
+      </Button>
+      <Button icon="m-icon-search" round loading>
+        点击我
+      </Button>
+      <Button type="primary" round icon="m-icon-setting" loading>
+        点击
+      </Button>
     </div>
   )
 }
