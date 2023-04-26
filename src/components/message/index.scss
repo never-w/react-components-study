@@ -1,7 +1,14 @@
+.mzl_message-container {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .mzl_message_position {
   width: fit-content;
   height: auto;
-  margin: 0 auto;
+  margin: 10px auto;
   overflow: hidden;
   box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
 
