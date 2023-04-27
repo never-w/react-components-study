@@ -2,7 +2,6 @@ import React, { FC } from "react"
 import Button from "./components/button"
 import Space from "./components/space"
 import Message from "./components/message"
-import { message } from "antd"
 
 interface IProps {}
 
@@ -13,9 +12,7 @@ const App: FC<IProps> = (props) => {
       <Space>
         <Button
           onClick={() => {
-            // message.info("ssssssssssss")
-
-            Message.info("最基本的提示，默认在3秒后消失。")
+            Message.loading("最基本的提示，默认在3秒后消失。")
           }}
         >
           默认按钮

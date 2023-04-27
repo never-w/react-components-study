@@ -16,8 +16,7 @@ const MessageEle: FC<MessageProps> = (props) => {
   const { open, content, duration = 3, type = "info" } = props
   const [showMessage, setShowMessage] = useState(false)
 
-  const spaceClass = classNames({
-    mzl_message_item: true,
+  const spaceClass = classNames("mzl_message_item", {
     [`mzl_message_item_${type}`]: type,
   })
 
@@ -30,7 +29,7 @@ const MessageEle: FC<MessageProps> = (props) => {
 
   useEffect(() => {
     setShowMessage(open)
-    setTimeout(
+    const timer = setTimeout(
       () => {
         setShowMessage(false)
         setTimeout(() => {
@@ -40,6 +39,10 @@ const MessageEle: FC<MessageProps> = (props) => {
       },
       duration ? duration * 1000 : 3000
     )
+
+    return () => {
+      clearTimeout(timer)
+    }
   }, [open])
 
   return (
@@ -57,9 +60,11 @@ const MessageEle: FC<MessageProps> = (props) => {
 }
 
 const messageHandler = (content: string, type: Type, duration?: number) => {
-  const element = document.createElement("div")
-  element.className = "mzl_message-container"
-  if (!document.querySelector(".mzl_message-container")) {
+  const container = document.querySelector(".mzl_message-container")
+
+  if (!container) {
+    const element = document.createElement("div")
+    element.className = "mzl_message-container"
     document.body.appendChild(element)
   }
 
@@ -67,15 +72,14 @@ const messageHandler = (content: string, type: Type, duration?: number) => {
   Ele.className = "mzl_message"
   // 渲染DOM
   ReactDOM.createRoot(Ele as HTMLElement).render(<MessageEle open content={content} duration={duration} type={type} />)
+
   // 置入到指定节点下
-  const container = document.querySelector(".mzl_message-container")
   if (container) {
     container.appendChild(Ele)
   }
 }
 
 const Message = {
-  Ele: null,
   info: (content: string, duration?: number) => {
     messageHandler(content, "info", duration)
   },
