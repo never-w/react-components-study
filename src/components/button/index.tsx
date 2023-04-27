@@ -2,12 +2,12 @@ import React, { CSSProperties, FC } from "react"
 import "./index.scss"
 import classNames from "classnames"
 
-export type ButtonProps = {
+interface IProps {
   style?: CSSProperties
   className?: string
   children?: React.ReactNode
   type?: "default" | "primary" | "success" | "warning" | "error" | "info" | "link" | "text"
-  size?: "large" | "medium" | "small"
+  size?: "large" | "middle" | "small"
   round?: boolean
   icon?: string
   loading?: boolean
@@ -15,31 +15,31 @@ export type ButtonProps = {
   onClick?: React.MouseEventHandler<HTMLElement>
 }
 
-const Button: FC<ButtonProps> = (props) => {
-  const { style, className, children, type = "default", size = "medium", round, icon, loading, disabled, onClick } = props
-
-  const btnClass = classNames(
-    "mzl_btn",
+const Button: FC<IProps> = (props) => {
+  const { style, className, children, type = "default", size = "middle", round = false, icon = false, loading = false, disabled = false, onClick } = props
+  const classes = classNames(
+    "button",
+    `button--${type}`,
+    `button--${size}`,
     {
-      [`mzl_btn_${type}`]: type,
-      [`mzl_btn_${size}`]: size,
-      mzl_btn_round: round,
-      mzl_btn_loading: loading,
-      mzl_btn_disabled: disabled,
+      "button--round": round,
+      "button--icon": icon,
+      "button--loading": loading,
+      "button--disabled": disabled,
     },
     className
   )
 
-  const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
-    if (onClick && !loading) {
-      onClick(e)
+  const handleClick: React.MouseEventHandler<HTMLElement> = (event) => {
+    if (!disabled && !loading && onClick) {
+      onClick(event)
     }
   }
 
   return (
-    <button className={btnClass} style={style || undefined} disabled={disabled} onClick={handleBtnClick}>
-      {loading ? <span className={["m-icon-loading1", "mzl_publicRotateEle"].join(" ")} /> : null}
-      {icon && !loading ? <span className={icon} /> : null}
+    <button className={classes} style={style} onClick={handleClick} disabled={disabled}>
+      {icon && <i className={`icon-${icon}`} />}
+      {loading && <i className="icon-loading" />}
       {children}
     </button>
   )
