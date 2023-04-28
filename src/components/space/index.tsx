@@ -1,17 +1,39 @@
-import React, { CSSProperties, FC } from "react"
-import "index.scss"
-import classNames from "classnames"
+import React, { CSSProperties, ReactNode } from "react"
 
-interface IProps {
-  gap?: number
-  style?: CSSProperties
-  className?: string
+interface SpaceProps {
+  children: ReactNode
+  align?: "start" | "end" | "center"
   direction?: "horizontal" | "vertical"
-  align?: "start" | "end" | "center" | "baseline"
+  size?: "small" | "medium" | "large" | number
 }
 
-const Space: FC<IProps> = (props) => {
-  return <div></div>
+// 定义辅助函数以获取尺寸
+const getSizeValue = (size: "small" | "medium" | "large" | number): number => {
+  switch (size) {
+    case "small":
+      return 8
+    case "medium":
+      return 16
+    case "large":
+      return 24
+    default:
+      return size
+  }
+}
+
+const Space: React.FC<SpaceProps> = (props) => {
+  const { children, direction = "horizontal", size = "small", align = "center" } = props
+
+  const spaceSize = getSizeValue(size)
+
+  const styles: CSSProperties = {
+    display: "flex",
+    flexDirection: direction === "horizontal" ? "row" : "column",
+    alignItems: "start",
+    gap: spaceSize,
+  }
+
+  return <div style={styles}>{children}</div>
 }
 
 export default Space
