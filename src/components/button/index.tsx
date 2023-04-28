@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC } from "react"
+import React, { CSSProperties, FC, forwardRef } from "react"
 import "./index.scss"
 import classNames from "classnames"
 
@@ -6,8 +6,8 @@ interface IProps {
   style?: CSSProperties
   className?: string
   children?: React.ReactNode
-  type?: "default" | "primary" | "success" | "warning" | "error" | "info" | "link" | "text"
-  size?: "large" | "middle" | "small"
+  type?: "primary" | "ghost" | "dashed" | "link" | "text" | "default" | "danger"
+  size?: "lg" | "md" | "sm"
   round?: boolean
   icon?: string
   loading?: boolean
@@ -16,16 +16,16 @@ interface IProps {
 }
 
 const Button: FC<IProps> = (props) => {
-  const { style, className, children, type = "default", size = "middle", round = false, icon = false, loading = false, disabled = false, onClick } = props
+  const { style, className, children, type = "default", size = "md", round = false, icon = false, loading = false, disabled = false, onClick } = props
   const classes = classNames(
-    "button",
-    `button--${type}`,
-    `button--${size}`,
+    "btn",
+    `btn-${type}`,
+    `btn-${size}`,
     {
-      "button--round": round,
-      "button--icon": icon,
-      "button--loading": loading,
-      "button--disabled": disabled,
+      "btn-round": round,
+      "btn-icon": icon,
+      "btn-loading": loading,
+      "btn-disabled": disabled,
     },
     className
   )

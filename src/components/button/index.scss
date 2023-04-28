@@ -1,141 +1,47 @@
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  font-weight: 500;
-  font-size: 1rem;
-  text-decoration: none;
-  border: none;
-  border-radius: 4px;
-  outline: none;
+.btn {
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  padding: 4px 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5715;
+  white-space: nowrap;
+  text-align: center;
+  background: #fff;
+  background-image: none;
+  border: 1px solid transparent;
+  border-color: #d9d9d9;
+  border-radius: 2px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
   cursor: pointer;
-  transition: all 0.3s ease;
-
-  &.button--round {
-    border-radius: 9999px;
-  }
-
-  &.button--large {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.25rem;
-  }
-
-  &.button--small {
-    padding: 0.375rem 0.75rem;
-    font-size: 0.875rem;
-  }
-
-  &.button--default {
-    color: #000;
-    background-color: #f0f0f0;
-  }
-
-  &.button--primary {
-    color: #fff;
-    background-color: #007bff;
-  }
-
-  // ... 其他按钮类型的样式
-
-  &.button--disabled,
-  &.button--loading {
-    cursor: not-allowed;
-    opacity: 0.65;
-  }
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
 
   &:hover {
-    // 根据需要添加 hover 样式
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 1;
   }
 }
 
-.icon-loading {
-  //  // ... 添加加载图标样式
-  animation: spin 1s linear infinite;
-}
-
-.icon {
-  margin-right: 0.5rem;
-  // 添加通用图标样式，如：
-  font-size: 1rem;
-
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
-// 其他按钮类型的样式
-.button--success {
+.btn-primary {
   color: #fff;
-  background-color: #28a745;
+  background: #1890ff;
+  border-color: #1890ff;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 }
 
-.button--warning {
-  color: #212529;
-  background-color: #ffc107;
-}
-
-.button--error {
+.btn-danger {
   color: #fff;
-  background-color: #dc3545;
-}
-
-.button--info {
-  color: #fff;
-  background-color: #17a2b8;
-}
-
-.button--link {
-  color: #007bff;
-  text-decoration: underline;
-  background-color: transparent;
-}
-
-.button--text {
-  color: #007bff;
-  background-color: transparent;
-}
-
-// hover样式
-.button:not(.button--disabled):not(.button--loading):hover {
-  opacity: 0.85;
-}
-
-// 根据需要为特定按钮类型添加hover样式
-.button--primary:hover {
-  background-color: #0069d9;
-}
-
-.button--success:hover {
-  background-color: #218838;
-}
-
-.button--warning:hover {
-  background-color: #e0a800;
-}
-
-.button--error:hover {
-  background-color: #c82333;
-}
-
-.button--info:hover {
-  background-color: #138496;
-}
-
-.button--link:hover {
-  color: #0056b3;
-}
-
-.button--text:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  background: #ff4d4f;
+  border-color: #ff4d4f;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 }
