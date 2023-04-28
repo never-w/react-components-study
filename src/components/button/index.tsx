@@ -6,7 +6,7 @@ interface IProps {
   style?: CSSProperties
   className?: string
   children?: React.ReactNode
-  type?: "primary" | "ghost" | "dashed" | "link" | "text" | "default" | "danger"
+  type?: "primary" | "dashed" | "link" | "text" | "default" | "danger"
   size?: "lg" | "md" | "sm"
   round?: boolean
   icon?: string
