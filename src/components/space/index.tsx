@@ -1,39 +1,69 @@
-import React, { CSSProperties, ReactNode } from "react"
+import React, { FC } from "react"
+import childrenToArray from "../../utils/childrenToArray"
+import Item from "./item"
+import classNames from "classnames"
+import "./index.scss"
 
-interface SpaceProps {
-  children: ReactNode
-  align?: "start" | "end" | "center"
+interface SpaceProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string
+  style?: React.CSSProperties
+  align?: "start" | "end" | "center" | "baseline"
   direction?: "horizontal" | "vertical"
-  size?: "small" | "medium" | "large" | number
+  size?: SpaceSize
+  split?: React.ReactNode
+}
+type SpaceSize = "small" | "middle" | "large" | number
+
+const spaceSize = {
+  small: 8,
+  middle: 16,
+  large: 24,
 }
 
-// 定义辅助函数以获取尺寸
-const getSizeValue = (size: "small" | "medium" | "large" | number): number => {
-  switch (size) {
-    case "small":
-      return 8
-    case "medium":
-      return 16
-    case "large":
-      return 24
-    default:
-      return size
-  }
+function getNumberSize(size: SpaceSize) {
+  return typeof size === "string" ? spaceSize[size] : size || 0
 }
 
-const Space: React.FC<SpaceProps> = (props) => {
-  const { children, direction = "horizontal", size = "small", align = "center" } = props
+export const SpaceContext = React.createContext({
+  latestIndex: 0,
+  spaceSizeNum: 0,
+})
 
-  const spaceSize = getSizeValue(size)
+const Space: FC<SpaceProps> = (props) => {
+  const { className, style, align, direction = "horizontal", size = "small", split, children } = props
 
-  const styles: CSSProperties = {
-    display: "flex",
-    flexDirection: direction === "horizontal" ? "row" : "column",
-    alignItems: "start",
-    gap: spaceSize,
-  }
+  const classes = classNames(
+    "space",
+    `space-${direction}`,
+    {
+      [`space-align-${align}`]: align,
+    },
+    className
+  )
 
-  return <div style={styles}>{children}</div>
+  const childNodes = childrenToArray(children, { keepEmpty: true })
+
+  // Calculate latest one
+  let latestIndex = 0
+  const nodes = childNodes.map((child, i) => {
+    if (child !== null && child !== undefined) {
+      latestIndex = i
+    }
+
+    const key = (child && child.key) || `space-item-${i}`
+
+    return (
+      <Item key={key} direction={direction} index={i} split={split}>
+        {child}
+      </Item>
+    )
+  })
+
+  return (
+    <div className={classes} style={style}>
+      <SpaceContext.Provider value={{ spaceSizeNum: getNumberSize(size), latestIndex }}>{nodes}</SpaceContext.Provider>
+    </div>
+  )
 }
 
 export default Space
