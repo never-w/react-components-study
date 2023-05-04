@@ -9,7 +9,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/components/styles/global.scss";`,
+        additionalData: `@import "./src/components/styles/global.scss"; @import "./src/fonts/iconfont.css";`,
       },
     },
   },

@@ -1,6 +1,7 @@
 .btn {
   position: relative;
-  display: inline-block;
+  display: inline-flex !important;
+  gap: 0 5px;
   height: 32px;
   padding: 4px 15px;
   color: rgba(0, 0, 0, 0.85);
@@ -171,4 +172,14 @@
   padding: 0px 12px;
   font-size: 14px;
   border-radius: 24px;
+}
+
+.btn-loading {
+  cursor: default;
+  opacity: 0.75;
+
+  &:hover,
+  &:active {
+    opacity: 0.75;
+  }
 }

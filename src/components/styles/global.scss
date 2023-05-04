@@ -1,66 +1,27 @@
-// 颜色
-$primary-color: #1890ff;
-$error-color: #ff4d4f;
+// 全局旋转类名
+.wyq_publicRotateEle {
+  -webkit-animation: icon-loading 1.5s linear infinite;
+  animation: icon-loading 1.5s linear infinite;
+}
 
-// 字体颜色
-$font-color: rgba(0, 0, 0, 0.85);
+@keyframes icon-loading {
+  0% {
+    transform: rotate(0deg);
+  }
 
-// 字体
-$font-size-base: 14px;
-$font-size-lg: 16px;
-$font-size-sm: 12px;
+  25% {
+    transform: rotate(90deg);
+  }
 
-// 阴影
-$box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  50% {
+    transform: rotate(180deg);
+  }
 
-// 按钮
-$btn-height-md: 32px;
-$btn-height-lg: 40px;
-$btn-height-sm: 24px;
+  75% {
+    transform: rotate(270deg);
+  }
 
-$btn-primary-bg-color: $primary-color;
-$btn-primary-border-color: $primary-color;
-
-$btn-box-shadow-base: 0 2px 0 rgba(0, 0, 0, 0.015);
-$btn-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-
-$btn-default-color: $font-color;
-$btn-default-bg: #fff;
-
-$btn-padding-horizontal-base: 15px;
-$btn-padding-horizontal-lg: 15px;
-$btn-padding-horizontal-sm: 7px;
-
-// ---------------------------------------------------------
-//  --------------------------------------------------------
-// ---------------------------------------------------------
-//  --------------------------------------------------------
-// ---------------------------------------------------------
-//  --------------------------------------------------------
-$link-color: #40a9ff;
-$success-color: #52c41a;
-$warning-color: #faad14;
-$disabled-color: #bfbfbf;
-
-$background-color: #f0f2f5;
-$border-color-base: #d9d9d9;
-
-// 间距
-$spacing-xs: 4px;
-$spacing-sm: 8px;
-$spacing-md: 16px;
-$spacing-lg: 24px;
-$spacing-xl: 32px;
-
-// 边框
-$border-radius-base: 4px;
-$border-radius-sm: 2px;
-$border-width-base: 1px;
-$border-style-base: solid;
-
-// 阴影
-$shadow-depth-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-$shadow-depth-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-$shadow-depth-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-$shadow-depth-4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-$shadow-depth-5: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  100% {
+    transform: rotate(360deg);
+  }
+}
