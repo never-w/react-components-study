@@ -1,6 +1,7 @@
 import { FC } from "react"
 import Button from "./components/button"
 import Space from "./components/space"
+import Message from "./components/message"
 
 interface IProps {}
 
@@ -26,7 +27,13 @@ const App: FC<IProps> = () => {
           Link Button
         </Button>
 
-        <Button size="sm" type="primary">
+        <Button
+          size="sm"
+          type="primary"
+          onClick={() => {
+            Message.info("这是一条成功的提示")
+          }}
+        >
           小按钮
         </Button>
         <Button size="lg" type="primary">
