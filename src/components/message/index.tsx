@@ -55,8 +55,7 @@ const MessageEle: FC<MessageProps> = (props) => {
 }
 
 const msgHandler = (content: string, type: Type, duration: number) => {
-  const container = document.querySelector(".message")
-  if (!container) {
+  if (!document.querySelector(".message")) {
     const eleRoot = document.createElement("div")
     eleRoot.className = "message"
     document.body.appendChild(eleRoot)
@@ -66,6 +65,7 @@ const msgHandler = (content: string, type: Type, duration: number) => {
   ele.className = `message-${type}`
   ReactDOM.createRoot(ele).render(<MessageEle content={content} type={type} duration={duration} open />)
 
+  const container = document.querySelector(".message")
   if (container) {
     container.appendChild(ele)
   }

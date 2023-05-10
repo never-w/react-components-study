@@ -9,7 +9,6 @@ const App: FC<IProps> = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, paddingTop: 100 }}>
       <Space direction="vertical" size={40}>
-        <div style={{ height: 40, backgroundColor: "green" }}></div>
         <Button disabled>Default Button</Button>
         <Button type="primary" loading>
           Primary Button
