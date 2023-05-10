@@ -39,7 +39,7 @@ const Button: FC<IProps> = (props) => {
   return (
     <button className={classes} style={style} onClick={handleClick} disabled={disabled}>
       {icon && <i className={icon} />}
-      {loading && <i className="icon-loading1 wyq-publicRotateEle" />}
+      {loading && <i className="icon-loading1 publicRotateEle" />}
       {children}
     </button>
   )

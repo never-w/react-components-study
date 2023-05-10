@@ -45,7 +45,7 @@ const MessageEle: FC<MessageProps> = (props) => {
       <CSSTransition in={showMessage} timeout={300} classNames="alert" unmountOnExit>
         <div className="message-position">
           <div className={classes}>
-            {type === "loading" ? <i className="icon-loading1 wyq-publicRotateEle" /> : <i className={defaultIcon} />}
+            {type === "loading" ? <i className="icon-loading1 publicRotateEle" /> : <i className={defaultIcon} />}
             <span>{content}</span>
           </div>
         </div>
