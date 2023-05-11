@@ -78,10 +78,6 @@ const Modal: FC<IProps> = (props) => {
 
     if (visible) {
       setHidden(visible)
-    } else {
-      setTimeout(() => {
-        setHidden(visible)
-      }, 200)
     }
   }, [visible])
 
@@ -91,6 +87,9 @@ const Modal: FC<IProps> = (props) => {
     <>
       <div className="modalWrap">
         <div
+          onAnimationEnd={() => {
+            if (!visible) setHidden(visible)
+          }}
           className={["modalContent", visible ? undefined : "close"].filter(Boolean).join(" ")}
           style={{
             width,

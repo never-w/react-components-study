@@ -23,7 +23,8 @@
 }
 
 .modalContent.close {
-  animation: spreadEnd 0.3s;
+  animation: spreadEnd 0.3s forwards;
+  // animation-fill-mode: forwards;
 }
 
 .modalCloseBtn {
