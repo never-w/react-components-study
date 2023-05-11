@@ -61,7 +61,7 @@ const Modal: FC<IProps> = (props) => {
   } = props
 
   const flagRef = useRef(false)
-  const [hidden, setHidden] = useState(visible)
+  const [showModal, setShowModal] = useState(visible)
 
   useEffect(() => {
     document.onkeydown = function (event) {
@@ -77,20 +77,20 @@ const Modal: FC<IProps> = (props) => {
     flagRef.current = true
 
     if (visible) {
-      setHidden(visible)
+      setShowModal(visible)
     }
   }, [visible])
 
-  if (!hidden) return null
+  if (!showModal) return null
 
   return createPortal(
     <>
       <div className="modalWrap">
         <div
           onAnimationEnd={() => {
-            if (!visible) setHidden(visible)
+            if (!visible) setShowModal(visible)
           }}
-          className={["modalContent", visible ? undefined : "close"].filter(Boolean).join(" ")}
+          className={`modalContent ${visible ? "showModal" : "closedModal"}`}
           style={{
             width,
           }}

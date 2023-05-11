@@ -23,7 +23,7 @@ const App: FC<IProps> = () => {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, paddingTop: 100 }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, paddingTop: 100, position: "relative" }}>
       {/* <Space direction="vertical" size={100} align="center">
         <Space direction="horizontal" size={40}>
           <Button disabled>Default Button</Button>

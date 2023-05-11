@@ -18,13 +18,15 @@
   border-radius: 4px;
   -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: spreadStart 0.3s;
   pointer-events: auto;
-}
 
-.modalContent.close {
-  animation: spreadEnd 0.3s forwards;
-  // animation-fill-mode: forwards;
+  &.showModal {
+    animation: spreadStart 0.3s;
+  }
+
+  &.closedModal {
+    animation: spreadEnd 0.3s forwards;
+  }
 }
 
 .modalCloseBtn {
